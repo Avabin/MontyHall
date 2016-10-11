@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by Avabin on 10.10.2016.
+ * Class for simulating player behaviour.
  */
 public class Player {
     private int ID;
@@ -16,6 +16,12 @@ public class Player {
     private ArrayList<Door> doors;
     private Door choosenDoor;
 
+    /**
+     * Class constructor responsible for player object setup.
+     * @param ID ID of the player.
+     * @param doors ArrayList of doors
+     * @param stay boolean value determining player behaviour. If true, player will not switch door when asked to.
+     */
     public Player(int ID, ArrayList<Door> doors, boolean stay) {
         random = new Random();
         this.ID = ID;
@@ -26,11 +32,17 @@ public class Player {
 
     }
 
+    /**
+     * Choose door method.
+     */
     public void chooseDoor() {
         choosenDoor = doors.get(random.nextInt(doors.size()));
         System.out.println(prefix + "I'll choose that door.");
     }
 
+    /**
+     * Switch or Stay behaviour. When _stay_ boolean is true, player will NOT switch door when this method is called.
+     */
     public void switchOrStay() {
         if (!stay) {
             System.out.println(prefix + "I'll switch.");
@@ -47,19 +59,34 @@ public class Player {
         }
     }
 
+    /**
+     * Chosen door getter.
+     * @return reference to door chosen by player.
+     */
     public Door getChosenDoor() {
         return choosenDoor;
     }
 
+    /**
+     * In case player won, this method is called, increasing the win counter and making player happy :)
+     */
     public void increaseWinCounter() {
         System.out.println(prefix + "Yay! I won!");
         winCounter++;
     }
 
+    /**
+     * Win counter getter.
+     * @return win counter.
+     */
     public int getWinCounter() {
         return winCounter;
     }
 
+    /**
+     * ID getter.
+     * @return ID of player
+     */
     public int getID() {
         return ID;
     }
