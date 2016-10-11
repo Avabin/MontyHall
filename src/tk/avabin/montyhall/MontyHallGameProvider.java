@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * @author Avabin
- * @version 1.0
+ * Monty Hall's game provider
  */
 public class MontyHallGameProvider {
     private ArrayList<Door> doors;
@@ -15,7 +14,7 @@ public class MontyHallGameProvider {
     private Door rewardDoor;
 
     /**
-     * Setup job done by this constructor. Creating players and doors.
+     * Constructor responsible for creating players and doors.
      */
     public MontyHallGameProvider() {
         System.out.println("Welcome in my game! Greetings to our players!");
@@ -56,7 +55,7 @@ public class MontyHallGameProvider {
     /**
      * Openning one door with NO reward and NOT chosen by specified player.
      *
-     * @param player
+     * @param player player with a door chosen.
      * @see Player
      * @see Door
      */
@@ -70,6 +69,10 @@ public class MontyHallGameProvider {
         }
     }
 
+    /**
+     * Playing a one round with simulation of Game Master speech with System.out.println().
+     * @param player player for which round will be played.
+     */
     private void round(Player player) {
         setDoors();
         doors.stream().filter(Door::isRewardBehind).forEach(door -> rewardDoor = door);
